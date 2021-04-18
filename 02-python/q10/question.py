@@ -19,5 +19,12 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import csv
+text=[]
+with open('data.csv', 'rt') as f:
+    text += f.readlines()
+text = [line.replace("\n","").split("\t") for line in text]
+info = [[row[0],len(row[3].split(",")),len(row[4].split(","))] for row in text]
+for row in info:
+    print(str(row[0])+","+str(row[1])+","+str(row[2]))
 

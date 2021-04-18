@@ -16,4 +16,22 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import pandas as pd
 
+data = pd.read_csv('tbl2.tsv' , sep='\t')
+xn = sorted(pd.unique(data._c0))
+serie = pd.Series(xn, name= '_c0')
+data['x2'] =  data['_c5a'].astype(str) +':'+ data['_c5b'].astype(str)
+listas = []
+for n in xn:
+    temp = sorted(data[data['_c0'] == n].x2)
+    empty = ''
+    for num, let in enumerate(temp):
+        if num == len(temp)-1:
+            empty = empty + str(let)
+        else:
+            empty = empty + str(let) + ','
+    listas.append(empty)
+lista = pd.Series(listas, name='lista')
+tabla = pd.concat([serie , lista], axis=1)
+print(tabla)

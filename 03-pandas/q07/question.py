@@ -14,4 +14,8 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import pandas as pd
+df= pd.read_csv('tbl0.tsv', sep='\t')
+df['ano'], df['mes'],df['dia'] = df['_c3'].str.split('-', 2).str
+df = df.drop(['mes','dia'], axis=1)
+print(df)

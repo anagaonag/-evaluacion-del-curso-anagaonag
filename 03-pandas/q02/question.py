@@ -16,3 +16,10 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import pandas as pd
+import os
+x= pd.read_csv('tbl0.tsv', sep='\t')
+x=x[['_c1', '_c2']]
+df = x.sort_values(by='_c1')
+df = df.groupby('_c1').mean()['_c2']
+print(df)

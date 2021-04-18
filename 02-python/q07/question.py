@@ -23,4 +23,20 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import csv
+text=[]
+with open('data.csv', 'rt') as f:
+    text += f.readlines()
+text = [line.replace("\n","").split("\t") for line in text]
+column1 = [row[0] for row in text]
+column2 = [row[1] for row in text]
+keys = set(column2)
+tuplas = []
+for key in keys:
+    lista = []
+    for i in range(len(column2)):
+        if column2[i] == key:
+            lista.append(column1[i])
+    tuplas.append((key,lista))
+for tupla in sorted(tuplas):
+    print(repr(tupla))

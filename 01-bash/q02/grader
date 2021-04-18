@@ -51,7 +51,7 @@ def run_answer():
     _ = os.system('bash question.sh > out')
     answer = open('out', 'rt').read()
     os.remove('out')
-    print(answer)
+    print(answer,globals())
 
 #--------------------------------------------------------------------------------------------------
 # Grader (generic)

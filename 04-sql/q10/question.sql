@@ -45,4 +45,4 @@
 --
 --  >>> Escriba su codigo a partir de este punto <<<
 --  
-
+SELECT * FROM tbl0 WHERE C02 >= 300

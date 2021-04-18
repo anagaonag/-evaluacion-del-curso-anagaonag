@@ -7,3 +7,4 @@
 ## 
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+cat person|sort -k1,1n|awk -F'""' 'NR == 3'|awk -F"," '{gsub(/"/,"");print $3}'

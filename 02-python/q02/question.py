@@ -15,5 +15,12 @@
 ##  No puede usar pandas en este ejercicio
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
-
+texto = []
+with open('data.csv', 'rt') as f:
+    texto += f.readlines()
+texto=[line.replace("\n","") for line in texto]
+texto=[line.split("\t")[0] for line in texto]
+keys=set(texto)
+tuplas=[(key,texto.count(key)) for key in keys]
+for tupla in sorted(tuplas):
+    print(str(tupla[0])+","+str(tupla[1]))

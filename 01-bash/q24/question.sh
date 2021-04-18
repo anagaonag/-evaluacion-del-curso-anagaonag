@@ -6,3 +6,4 @@
 ## 
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+awk '/Jul/{c++} /Aug/{c++}/Sep/{c++} END{print c+0}' *.txt

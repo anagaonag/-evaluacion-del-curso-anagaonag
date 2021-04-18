@@ -16,4 +16,21 @@
 ## 
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import pandas as pd
+data = pd.read_csv('tbl0.tsv' , sep='\t')
+letters = sorted(pd.unique(data._c1))
+serie = pd.Series(letters , name = '_c0')
+listas = []
+for letter in letters:
+    temp = sorted(data[data['_c1'] == letter]._c2)
+    empty = ""
+    for num, let in enumerate(temp):
+            if num == len(temp)-1:
+                empty = empty + str(let)
+            else:
+                empty = empty + str(let)+":"                                      
+    listas.append(empty)
+lista = pd.Series(listas, name = 'lista')
+tabla = pd.concat([serie , lista] , axis = 1)
+print(tabla)
 

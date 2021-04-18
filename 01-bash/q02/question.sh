@@ -23,3 +23,27 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+for i in $(ls)
+do
+    cont=0
+    if [[ $i =~ (.*)csv$ ]]
+    then
+        #echo $i
+        while IFS= read -r line
+        do
+            if [ -n "$line" ]; then
+                #echo $line
+                let cont=$cont+1
+                #echo $line 
+                echo $line > tmp.1
+                col2=$(awk '{split($0,nombre," ")} {print nombre[2]}' tmp.1)
+                IFS=',' read -ra letter3 <<< "$col2"
+                for j in "${letter3[@]}"; do
+                    echo $i","$cont","${line:0:1}","$j 
+                done  
+            fi
+            
+        done < $i
+    fi 
+done
+rm tmp.1

@@ -6,4 +6,4 @@
 ##  registro?
 ## 
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+awk -F'""' 'NR == 2' data.csv|awk -F"," '{gsub(/"/,"");print $1}'

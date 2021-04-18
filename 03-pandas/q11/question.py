@@ -17,6 +17,17 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import numpy as np
+import pandas as pd
+import csv
+datos= pd.read_csv('tbl2.tsv', sep='\t', header=0 )
+datos1= pd.read_csv('tbl0.tsv', sep='\t', header=0 )
+datos.sort_values(['_c0','_c5b'],inplace=True)
+Tabla=datos[['_c0','_c5b']].groupby('_c0')['_c5b'].apply(lambda x: x.sum()).reset_index()
+Tablam=pd.merge(datos1,Tabla,on='_c0')
+Tablam.sort_values(['_c1','_c5b'],inplace=True)
+Tablaf=Tablam.groupby("_c1")["_c5b"].sum()
+print(Tablaf)
 
 
 

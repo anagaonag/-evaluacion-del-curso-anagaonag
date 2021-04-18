@@ -21,7 +21,18 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import csv
+text=[]
+with open('data.csv', 'rt') as f:
+    text += f.readlines()
+text = [line.replace("\n","").split("\t") for line in text]
+column5 = [row[4] for row in text]
+lista = [element for line in column5 for element in line.split(",")]
+keys = [element.split(":")[0] for element in lista]
+keys_uniq = set(keys)
+tuplas = [(key,keys.count(key)) for key in keys_uniq]
+for tupla in sorted(tuplas):
+    print(str(tupla[0])+","+str(tupla[1]))
 
 
 

@@ -24,4 +24,13 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import csv
+text=[]
+with open('data.csv', 'rt') as f:
+    text += f.readlines()
+text = [line.replace("\n","").split("\t") for line in text]
+meses = [row[2].split("-")[1] for row in text]
+keys = set(meses)
+tuplas = [(key,meses.count(key)) for key in keys]
+for tupla in sorted(tuplas):
+    print(str(tupla[0])+","+str(tupla[1]))    

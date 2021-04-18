@@ -7,3 +7,6 @@
 ## 
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+grep -v Anaheim person>person2
+grep -v fullname person2>person3
+grep -c "^" person3

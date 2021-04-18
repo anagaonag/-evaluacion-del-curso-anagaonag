@@ -7,3 +7,4 @@
 ## 
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+awk -F'""' 'NR == 3' data.csv|awk -F"," '{gsub(/"/,"");print $2}'
